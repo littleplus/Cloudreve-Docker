@@ -13,7 +13,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 RUN apk add /lib/glibc-2.31-r0.apk
 
 # Set workdir
-WORKDIR /root/cloudreve
+WORKDIR /etc/cloudreve
 
 # Add start shell
 COPY launch.sh /tmp/

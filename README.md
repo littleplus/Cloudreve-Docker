@@ -5,13 +5,16 @@ The docker of Cloudreve
 
 本容器基于redis:5-alpine基础镜像制作，在保证程序运行稳定的前提下，实现最小空间占用以及资源消耗
 
-本容器的Cloudreve版本为Cloudreve-3.0.0-RC-1，大概率镜像及Dockerfile将不会再更新
+本容器的Cloudreve版本为Cloudreve-3.3.1，镜像最新版本为
+```littleplus/cloudreve:3.3.1-sqlite```
 
 ### 容器特点
 * 镜像大小仅70M左右，资源消耗极低
 * 外挂程序运行目录，可以自行更新Cloudreve版本，修改配置文件
 * 在初次使用时，会在/etc/cloudreve目录生成cloudreve二进制文件以及配置文件
 * 在/etc/cloudreve/cloudreve.db不存在时，由cloudreve自行生成sqlite数据库，密码可以在docker logs里面看到
+* web默认监听8080端口，请务必把此端口映射到主机上，否则无法访问
+* 二进制文件、配置文件以及sqlite数据库文件存放于/etc/cloudreve文件夹下
 
 ### 快速开始
 
@@ -25,7 +28,7 @@ The docker of Cloudreve
 /data/uploads/{uid}/{path}
 ```
 
-### QA
+### Q&A
 
 1. 忘记保存初始密码了怎么办
 删除/etc/cloudreve/cloudreve.db文件（会丢失原有文件记录），运行scripts/的start.sh，会重新生成密码
